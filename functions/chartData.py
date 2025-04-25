@@ -64,9 +64,7 @@ def chartData(songUrl):
     songDataDict['Artist'] = songDataLst[0]
     songDataDict['Duration'] = songDataLst[2]
     songDataDict['BPM'] = songDataLst[3]
-    version = songDataLst[4]
-    songDataDict['Version'] = version[3:-12]
-    songDataDict['Release Date'] = version[-11:-1]
+    songDataDict['Release'] = songDataLst[4]
     songDataDict.update(songPst)
     songDataDict.update(songPrs)
     songDataDict.update(songFtr)
