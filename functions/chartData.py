@@ -30,9 +30,14 @@ def chartData(songUrl):
             songExtraDict['byd Chart Design'] = ""
         else:
             try:
-                songExtraDict['byd'] = songExtraLst[0]
-                songExtraDict['byd Note Count'] = songExtraLst[1]
-                songExtraDict['byd Chart Design'] = songExtraLst[2]
+                if songExtraLst[1] == "空":
+                    songExtraDict['byd'] = ""
+                    songExtraDict['byd Note Count'] = ""
+                    songExtraDict['byd Chart Design'] = ""
+                else:
+                    songExtraDict['byd'] = songExtraLst[0]
+                    songExtraDict['byd Note Count'] = songExtraLst[1]
+                    songExtraDict['byd Chart Design'] = songExtraLst[2]
             except:
                 songExtraDict['byd'] = 'TBA'
                 songExtraDict['byd Note Count'] = 'TBA'
@@ -64,7 +69,8 @@ def chartData(songUrl):
     songDataDict['Artist'] = songDataLst[0]
     songDataDict['Duration'] = songDataLst[2]
     songDataDict['BPM'] = songDataLst[3]
-    songDataDict['Release'] = songDataLst[4]
+    release = songDataLst[4]
+    songDataDict['Release'] = release[3:]
     songDataDict.update(songPst)
     songDataDict.update(songPrs)
     songDataDict.update(songFtr)
